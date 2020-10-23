@@ -10,6 +10,11 @@ DFBGN: Derivative-Free Block Gauss-Newton
    :target: https://www.gnu.org/licenses/gpl-3.0
    :alt: GNU GPL v3 License
 
+.. image:: https://img.shields.io/pypi/v/dfbgn.svg
+   :target: https://pypi.python.org/pypi/dfbgn
+   :alt: Latest PyPI version
+
+
 DFBGN is a Python package for  nonlinear least-squares minimization, where derivatives are not available.
 It is particularly useful when evaluations of the objective are expensive and/or noisy, and the number of variables to be optimized is large.
 
