@@ -172,5 +172,6 @@ class TestMultBad(unittest.TestCase):
         self.assertRaises(AssertionError, lambda: hess * np.arange(n-1, dtype=np.float))
         self.assertRaises(AssertionError, lambda: hess * np.arange(n+1, dtype=np.float))
 
+
 if __name__ == '__main__':
     unittest.main()

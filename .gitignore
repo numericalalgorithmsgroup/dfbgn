@@ -6,3 +6,4 @@ dist/
 venv/
 .eggs/
 start_virtual_environment.sh
+.idea/

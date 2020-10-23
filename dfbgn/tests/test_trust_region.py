@@ -32,6 +32,10 @@ from dfbgn.trust_region import trsbox, trsbox_geometry
 from dfbgn.util import model_value
 
 
+def array_compare(x, y, thresh=1e-14):
+    return np.max(np.abs(x - y)) < thresh
+
+
 def cauchy_pt(g, hess, delta):
     # General expression for the Cauchy point
     crv = np.dot(g, hess.vec_mul(g))
@@ -91,7 +95,7 @@ class TestUncInternal(unittest.TestCase):
         # self.assertAlmostEqual(est_min, true_min, 'Wrong min value')
         s_cauchy, red_cauchy, crvmin_cauchy = cauchy_pt(g, hess, Delta)
         self.assertTrue(est_min <= red_cauchy, 'Cauchy reduction not achieved')
-        self.assertTrue(np.all(gnew == g + hess.vec_mul(d)), 'Wrong gnew')
+        self.assertTrue(array_compare(gnew, g + hess.vec_mul(d)), 'Wrong gnew')
         print(crvmin)
         self.assertAlmostEqual(crvmin, 1.2, 'Wrong crvmin')
 
@@ -115,7 +119,7 @@ class TestUncBdry(unittest.TestCase):
         # self.assertAlmostEqual(est_min, true_min, 'Wrong min value')
         s_cauchy, red_cauchy, crvmin_cauchy = cauchy_pt(g, hess, Delta)
         self.assertTrue(est_min <= red_cauchy, 'Cauchy reduction not achieved')
-        self.assertTrue(np.all(gnew == g + hess.vec_mul(d)), 'Wrong gnew')
+        self.assertTrue(array_compare(gnew, g + hess.vec_mul(d)), 'Wrong gnew')
         self.assertAlmostEqual(crvmin, 0.0, 'Wrong crvmin')
 
 
@@ -138,7 +142,7 @@ class TestUncBdry2(unittest.TestCase):
         # self.assertAlmostEqual(est_min, true_min, 'Wrong min value')
         s_cauchy, red_cauchy, crvmin_cauchy = cauchy_pt(g, hess, Delta)
         self.assertTrue(est_min <= red_cauchy, 'Cauchy reduction not achieved')
-        self.assertTrue(np.all(gnew == g + hess.vec_mul(d)), 'Wrong gnew')
+        self.assertTrue(array_compare(gnew, g + hess.vec_mul(d)), 'Wrong gnew')
         self.assertAlmostEqual(crvmin, 0.0, 'Wrong crvmin')
 
 
@@ -161,7 +165,7 @@ class TestUncBdry3(unittest.TestCase):
         # self.assertAlmostEqual(est_min, true_min, 'Wrong min value')
         s_cauchy, red_cauchy, crvmin_cauchy = cauchy_pt(g, hess, Delta)
         self.assertTrue(est_min <= red_cauchy, 'Cauchy reduction not achieved')
-        self.assertTrue(np.all(gnew == g + hess.vec_mul(d)), 'Wrong gnew')
+        self.assertTrue(array_compare(gnew, g + hess.vec_mul(d)), 'Wrong gnew')
         self.assertAlmostEqual(crvmin, 0.0, 'Wrong crvmin')
         # self.assertAlmostEqual(crvmin, crvmin_cauchy, 'Wrong crvmin')
 
@@ -185,7 +189,7 @@ class TestUncHard(unittest.TestCase):
         # self.assertAlmostEqual(est_min, true_min, 'Wrong min value')
         s_cauchy, red_cauchy, crvmin_cauchy = cauchy_pt(g, hess, Delta)
         self.assertTrue(est_min <= red_cauchy, 'Cauchy reduction not achieved')
-        self.assertTrue(np.all(gnew == g + hess.vec_mul(d)), 'Wrong gnew')
+        self.assertTrue(array_compare(gnew, g + hess.vec_mul(d)), 'Wrong gnew')
         self.assertAlmostEqual(crvmin, 0.0, 'Wrong crvmin')
 
 
@@ -210,7 +214,7 @@ class TestConInternal(unittest.TestCase):
         # print(s_cauchy)
         # print(d)
         self.assertTrue(est_min <= red_cauchy, 'Cauchy reduction not achieved')
-        self.assertTrue(np.all(gnew == g + hess.vec_mul(d)), 'Wrong gnew')
+        self.assertTrue(array_compare(gnew, g + hess.vec_mul(d)), 'Wrong gnew')
         print(crvmin)
         self.assertAlmostEqual(crvmin, -1.0, 'Wrong crvmin')
 
@@ -348,6 +352,7 @@ class TestGeom2WithAlmostZeros2(unittest.TestCase):
         # print(x)
         # print(xtrue)
         self.assertTrue(np.max(np.abs(x - xtrue)) < 1e-10, 'Wrong step')
+
 
 if __name__ == '__main__':
     unittest.main()

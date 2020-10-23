@@ -130,5 +130,6 @@ class TestLinear2(unittest.TestCase):
         # self.assertTrue(array_compare(soln.jacobian, A, thresh=1e-6), "Wrong Jacobian")  # should get exact Jacobian for linear problems
         self.assertTrue(abs(soln.f - fmin) < 1e-4, "Wrong fmin")
 
+
 if __name__ == '__main__':
     unittest.main()

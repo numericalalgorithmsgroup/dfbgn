@@ -217,5 +217,6 @@ class TestRandomBoxOrthogSubspace(unittest.TestCase):
             self.assertTrue(np.all(dirns[i, :] >= lower), "Direction %i below lower bound" % i)
             self.assertTrue(np.all(dirns[i, :] <= upper), "Direction %i above upper bound" % i)
 
+
 if __name__ == '__main__':
     unittest.main()

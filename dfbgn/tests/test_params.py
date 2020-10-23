@@ -49,5 +49,6 @@ class TestFail(unittest.TestCase):
         self.assertRaises(ValueError, lambda: p("fake_parameter_name"))  # should fail
         self.assertRaises(ValueError, lambda: p("fake_parameter_name", False))  # should fail
 
+
 if __name__ == '__main__':
     unittest.main()
