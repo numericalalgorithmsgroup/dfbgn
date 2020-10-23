@@ -118,7 +118,9 @@ class OptimResults(object):
             output += "Needed %g objective evaluations\n" % (self.nf)
             if self.nruns > 1:
                 output += "Did a total of %g runs\n" % self.nruns
-            if np.size(self.jacobian) < 200:
+            if self.jacobian is None:
+                output += "No approximate Jacobian available\n"
+            elif np.size(self.jacobian) < 200:
                 output += "Approximate Jacobian = %s\n" % str(self.jacobian)
             else:
                 output += "Not showing approximate Jacobian because it is too long; check self.jacobian\n"

@@ -1,7 +1,6 @@
 *.pyc
 */__pycache__
 *.egg-info
-docs/_build
 dist/
 venv/
 .eggs/

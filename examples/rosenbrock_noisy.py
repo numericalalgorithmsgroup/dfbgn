@@ -1,4 +1,4 @@
-# DFBGN example: minimize the Rosenbrock function
+# DFBGN example: minimize the noisy Rosenbrock function
 from __future__ import print_function
 import numpy as np
 import dfbgn

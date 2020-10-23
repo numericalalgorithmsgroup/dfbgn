@@ -1,0 +1,487 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Using DFBGN &mdash; DFBGN 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Installing DFBGN" href="install.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> DFBGN
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing DFBGN</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using DFBGN</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#nonlinear-least-squares-minimization">Nonlinear Least-Squares Minimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-use-dfbgn">How to use DFBGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-simple-example">A Simple Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#more-output">More Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-noisy-objective-evaluation">Example: Noisy Objective Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-solving-a-nonlinear-system-of-equations">Example: Solving a Nonlinear System of Equations</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">DFBGN</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Using DFBGN</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/userguide.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="using-dfbgn">
+<h1>Using DFBGN<a class="headerlink" href="#using-dfbgn" title="Permalink to this headline">¶</a></h1>
+<p>This section describes the main interface to DFBGN and how to use it.</p>
+<div class="section" id="nonlinear-least-squares-minimization">
+<h2>Nonlinear Least-Squares Minimization<a class="headerlink" href="#nonlinear-least-squares-minimization" title="Permalink to this headline">¶</a></h2>
+<p>DFBGN is designed to solve the local optimization problem</p>
+<div class="math notranslate nohighlight">
+\[\min_{x\in\mathbb{R}^n} \quad  f(x) := \sum_{i=1}^{m}r_{i}(x)^2\]</div>
+<p>DFBGN iteratively constructs an interpolation-based model for the objective, and determines a step using a trust-region framework.</p>
+</div>
+<div class="section" id="how-to-use-dfbgn">
+<h2>How to use DFBGN<a class="headerlink" href="#how-to-use-dfbgn" title="Permalink to this headline">¶</a></h2>
+<p>The main interface to DFBGN is via the function <code class="code docutils literal notranslate"><span class="pre">solve</span></code></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">soln</span> <span class="o">=</span> <span class="n">dfbgn</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">objfun</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">fixed_block</span><span class="o">=</span><span class="n">fixed_block</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The input <code class="code docutils literal notranslate"><span class="pre">objfun</span></code> is a Python function which takes an input <span class="math notranslate nohighlight">\(x\in\mathbb{R}^n\)</span> and returns the vector of residuals <span class="math notranslate nohighlight">\([r_1(x)\: \cdots \: r_m(x)]\in\mathbb{R}^m\)</span>. Both the input and output of <code class="code docutils literal notranslate"><span class="pre">objfun</span></code> must be one-dimensional NumPy arrays (i.e. with <code class="code docutils literal notranslate"><span class="pre">x.shape</span> <span class="pre">==</span> <span class="pre">(n,)</span></code> and <code class="code docutils literal notranslate"><span class="pre">objfun(x).shape</span> <span class="pre">==</span> <span class="pre">(m,)</span></code>).</p>
+<p>The input <code class="code docutils literal notranslate"><span class="pre">x0</span></code> is the starting point for the solver, and (where possible) should be set to be the best available estimate of the true solution <span class="math notranslate nohighlight">\(x_{min}\in\mathbb{R}^n\)</span>. It should be specified as a one-dimensional NumPy array (i.e. with <code class="code docutils literal notranslate"><span class="pre">x0.shape</span> <span class="pre">==</span> <span class="pre">(n,)</span></code>).
+As DFBGN is a local solver, providing different values for <code class="code docutils literal notranslate"><span class="pre">x0</span></code> may cause it to return different solutions, with possibly different objective values.</p>
+<p>The input <code class="code docutils literal notranslate"><span class="pre">fixed_block</span></code> is the size of the exploration space. It should be an integer from 1 to <code class="code docutils literal notranslate"><span class="pre">len(x0)</span></code> inclusive, set based on how fast you want the internal linear algebra calculations to be (smaller values are faster).</p>
+<p>The output of <code class="code docutils literal notranslate"><span class="pre">dfbgn.solve</span></code> is an object containing:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">soln.x</span></code> - an estimate of the solution, <span class="math notranslate nohighlight">\(x_{min}\in\mathbb{R}^n\)</span>, a one-dimensional NumPy array.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">soln.resid</span></code> - the vector of residuals at the calculated solution, <span class="math notranslate nohighlight">\([r_1(x_{min})\:\cdots\: r_m(x_{min})]\)</span>, a one-dimensional NumPy array.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">soln.f</span></code> - the objective value at the calculated solution, <span class="math notranslate nohighlight">\(f(x_{min})\)</span>, a Float.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">soln.nf</span></code> - the number of evaluations of <code class="code docutils literal notranslate"><span class="pre">objfun</span></code> that the algorithm needed, an Integer.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">soln.flag</span></code> - an exit flag, which can take one of several values (listed below), an Integer.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">soln.msg</span></code> - a description of why the algorithm finished, a String.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">soln.diagnostic_info</span></code> - a table of diagnostic information showing the progress of the solver, a Pandas DataFrame.</p></li>
+</ul>
+<p>The possible values of <code class="code docutils literal notranslate"><span class="pre">soln.flag</span></code> are defined by the following variables:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">soln.EXIT_SUCCESS</span></code> - DFBGN terminated successfully (the objective value or trust region radius are sufficiently small).</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">soln.EXIT_MAXFUN_WARNING</span></code> - maximum allowed objective evaluations reached. This is the most likely return value when using multiple restarts.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">soln.EXIT_SLOW_WARNING</span></code> - maximum number of slow iterations reached.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">soln.EXIT_FALSE_SUCCESS_WARNING</span></code> - DFBGN reached the maximum number of restarts which decreased the objective, but to a worse value than was found in a previous run.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">soln.EXIT_INPUT_ERROR</span></code> - error in the inputs.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">soln.EXIT_TR_INCREASE_ERROR</span></code> - error occurred when solving the trust region subproblem.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">soln.EXIT_LINALG_ERROR</span></code> - linear algebra error, e.g. the interpolation points produced a singular linear system.</p></li>
+</ul>
+<p>These variables are defined in the <code class="code docutils literal notranslate"><span class="pre">soln</span></code> object, so can be accessed with, for example</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">soln</span><span class="o">.</span><span class="n">flag</span> <span class="o">==</span> <span class="n">soln</span><span class="o">.</span><span class="n">EXIT_SUCCESS</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Success!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="a-simple-example">
+<h2>A Simple Example<a class="headerlink" href="#a-simple-example" title="Permalink to this headline">¶</a></h2>
+<p>Suppose we wish to minimize the <a class="reference external" href="https://en.wikipedia.org/wiki/Rosenbrock_function">Rosenbrock test function</a>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\min_{(x_1,x_2)\in\mathbb{R}^2}  &amp;\quad  100(x_2-x_1^2)^2 + (1-x_1)^2 \\\end{split}\]</div>
+<p>This function has exactly one local minimum <span class="math notranslate nohighlight">\(f(x_{min})=0\)</span> at <span class="math notranslate nohighlight">\(x_{min}=(1,1)\)</span>. We can write this as a least-squares problem as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\min_{(x_1,x_2)\in\mathbb{R}^2}  &amp;\quad  [10(x_2-x_1^2)]^2 + [1-x_1]^2 \\\end{split}\]</div>
+<p>A commonly-used starting point for testing purposes is <span class="math notranslate nohighlight">\(x_0=(-1.2,1)\)</span>. The following script shows how to solve this problem using DFBGN:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># DFBGN example: minimize the Rosenbrock function</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">dfbgn</span>
+
+<span class="c1"># Define the objective function</span>
+<span class="k">def</span> <span class="nf">rosenbrock</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">10.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">),</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+
+<span class="c1"># Define the starting point</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+
+<span class="c1"># DFBGN is a randomized algorithm - set random seed for reproducibility</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Call DFBGN</span>
+<span class="n">soln</span> <span class="o">=</span> <span class="n">dfbgn</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">rosenbrock</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">fixed_block</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Display output</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">soln</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Note that DFBGN is a randomized algorithm: the subspace it searches is randomly generated. The output of this script, showing that DFBGN finds the correct solution, is</p>
+<blockquote>
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>****** DFBGN Results ******
+Solution xmin = [ 1.          0.99999998]
+Residual vector = [ -1.61462722e-07   0.00000000e+00]
+Objective value f(xmin) = 2.607021062e-14
+Needed 72 objective evaluations
+No approximate Jacobian available
+Exit flag = 0
+Success: Objective is sufficiently small
+****************************
+</pre></div>
+</div>
+</div></blockquote>
+<p>This and all following problems can be found in the <a class="reference external" href="https://github.com/numericalalgorithmsgroup/dfbgn/tree/master/examples">examples</a> directory on the DFBGN Github page.</p>
+</div>
+<div class="section" id="more-output">
+<h2>More Output<a class="headerlink" href="#more-output" title="Permalink to this headline">¶</a></h2>
+<p>We can get DFBGN to print out more detailed information about its progress using the <a class="reference external" href="https://docs.python.org/3/library/logging.html">logging</a> module. To do this, we need to add the following lines:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># ... (call dfbgn.solve)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>And we can now see each evaluation of <code class="code docutils literal notranslate"><span class="pre">objfun</span></code>:</p>
+<blockquote>
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Function eval 1 has f = 24.2 at x = [-1.2  1. ]
+Function eval 2 has f = 63.2346372977649 at x = [-1.30493146  0.94178154]
+Function eval 3 has f = 27.9653746738959 at x = [-1.25821846  1.10493146]
+Function eval 4 has f = 6.33451236346909 at x = [-1.08861669  1.04465151]
+...
+Function eval 70 has f = 1.99643713755605e-12 at x = [ 1.          1.00000014]
+Function eval 71 has f = 110.765405382932 at x = [ 0.45748543 -0.84175933]
+Function eval 72 has f = 2.60702106219341e-14 at x = [ 1.          0.99999998]
+</pre></div>
+</div>
+</div></blockquote>
+<p>If we wanted to save this output to a file, we could replace the above call to <code class="code docutils literal notranslate"><span class="pre">logging.basicConfig()</span></code> with</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;myfile.log&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+                    <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">filemode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="example-noisy-objective-evaluation">
+<h2>Example: Noisy Objective Evaluation<a class="headerlink" href="#example-noisy-objective-evaluation" title="Permalink to this headline">¶</a></h2>
+<p>As described in <span class="xref std std-doc">info</span>, derivative-free algorithms such as DFBGN are particularly useful when <code class="code docutils literal notranslate"><span class="pre">objfun</span></code> has noise. Let’s modify the previous example to include random noise in our objective evaluation, and compare it to a derivative-based solver:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># DFBGN example: minimize the noisy Rosenbrock function</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">dfbgn</span>
+
+<span class="c1"># Define the objective function</span>
+<span class="k">def</span> <span class="nf">rosenbrock</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">10.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">),</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+
+<span class="c1"># Modified objective function: add 1% Gaussian noise</span>
+<span class="k">def</span> <span class="nf">rosenbrock_noisy</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">rosenbrock</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="mf">1e-2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,)))</span>
+
+<span class="c1"># Define the starting point</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+
+<span class="c1"># Set random seed (for reproducibility)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Demonstrate noise in function evaluation:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;objfun(x0) = </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">rosenbrock_noisy</span><span class="p">(</span><span class="n">x0</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+<span class="c1"># Call DFBGN</span>
+<span class="n">soln</span> <span class="o">=</span> <span class="n">dfbgn</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">rosenbrock_noisy</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">fixed_block</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Display output</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">soln</span><span class="p">)</span>
+
+<span class="c1"># Compare with a derivative-based solver</span>
+<span class="kn">import</span> <span class="nn">scipy.optimize</span> <span class="k">as</span> <span class="nn">opt</span>
+<span class="n">soln</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">least_squares</span><span class="p">(</span><span class="n">rosenbrock_noisy</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;** SciPy results **&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Solution xmin = </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">x</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Objective value f(xmin) = </span><span class="si">%.10g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">soln</span><span class="o">.</span><span class="n">cost</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Needed </span><span class="si">%g</span><span class="s2"> objective evaluations&quot;</span> <span class="o">%</span> <span class="n">soln</span><span class="o">.</span><span class="n">nfev</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit flag = </span><span class="si">%g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">soln</span><span class="o">.</span><span class="n">status</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The output of this is:</p>
+<blockquote>
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Demonstrate noise in function evaluation:
+objfun(x0) = [-4.4776183   2.20880346]
+objfun(x0) = [-4.44306447  2.24929965]
+objfun(x0) = [-4.48217255  2.17849989]
+objfun(x0) = [-4.44180389  2.19667014]
+objfun(x0) = [-4.39545837  2.20903317]
+
+****** DFBGN Results ******
+Solution xmin = [ 1.          0.99999994]
+Residual vector = [ -6.31017296e-07   5.73947373e-10]
+Objective value f(xmin) = 3.981831569e-13
+Needed 82 objective evaluations
+No approximate Jacobian available
+Exit flag = 0
+Success: Objective is sufficiently small
+****************************
+
+
+** SciPy results **
+Solution xmin = [-1.19999679  1.00000624]
+Objective value f(xmin) = 23.47462704
+Needed 8 objective evaluations
+Exit flag = 3
+`xtol` termination condition is satisfied.
+</pre></div>
+</div>
+</div></blockquote>
+<p>DFBGN is able to find the solution with 10 more function evaluations as in the noise-free case. However SciPy’s derivative-based solver, which has no trouble solving the noise-free problem, is unable to make any progress.</p>
+</div>
+<div class="section" id="example-solving-a-nonlinear-system-of-equations">
+<h2>Example: Solving a Nonlinear System of Equations<a class="headerlink" href="#example-solving-a-nonlinear-system-of-equations" title="Permalink to this headline">¶</a></h2>
+<p>Lastly, we give an example of using DFBGN to solve a nonlinear system of equations (taken from <a class="reference external" href="http://support.sas.com/documentation/cdl/en/imlug/66112/HTML/default/viewer.htm#imlug_genstatexpls_sect004.htm">here</a>). We wish to solve the following set of equations</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}x_1 + x_2 - x_1 x_2 + 2 &amp;= 0, \\
+x_1 \exp(-x_2) - 1 &amp;= 0.\end{split}\]</div>
+<p>The code for this is:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># DFBGN example: Solving a nonlinear system of equations</span>
+<span class="c1"># Originally from:</span>
+<span class="c1"># http://support.sas.com/documentation/cdl/en/imlug/66112/HTML/default/viewer.htm#imlug_genstatexpls_sect004.htm</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">exp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">dfbgn</span>
+
+<span class="c1"># Want to solve:</span>
+<span class="c1">#   x1 + x2 - x1*x2 + 2 = 0</span>
+<span class="c1">#   x1 * exp(-x2) - 1   = 0</span>
+<span class="k">def</span> <span class="nf">nonlinear_system</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span>
+                     <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">])</span>
+
+<span class="c1"># Warning: if there are multiple solutions, which one</span>
+<span class="c1">#          DFBGN returns will likely depend on x0!</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">])</span>
+
+<span class="c1"># DFBGN is a randomized algorithm - set random seed for reproducibility</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Call DFBGN</span>
+<span class="n">soln</span> <span class="o">=</span> <span class="n">dfbgn</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">nonlinear_system</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">fixed_block</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Display output</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">soln</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The output of this is</p>
+<blockquote>
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>****** DFBGN Results ******
+Solution xmin = [ 0.09777311 -2.32510592]
+Residual vector = [  2.38996951e-08   2.23316848e-07]
+Objective value f(xmin) = 5.044160988e-14
+Needed 18 objective evaluations
+No approximate Jacobian available
+Exit flag = 0
+Success: Objective is sufficiently small
+****************************
+</pre></div>
+</div>
+</div></blockquote>
+<p>Here, we see that both entries of the residual vector are very small, so both equations have been solved to high accuracy.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="install.html" class="btn btn-neutral float-left" title="Installing DFBGN" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Lindon Roberts
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
