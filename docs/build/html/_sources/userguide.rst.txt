@@ -10,7 +10,7 @@ DFBGN is designed to solve the local optimization problem
 
    \min_{x\in\mathbb{R}^n} \quad  f(x) := \sum_{i=1}^{m}r_{i}(x)^2
 
-DFBGN iteratively constructs an interpolation-based model for the objective, and determines a step using a trust-region framework.
+DFBGN iteratively constructs an interpolation-based model for the objective, and determines a step using a trust-region framework. For an in-depth technical description of the algorithm see the paper [CR2021]_.
 
 
 How to use DFBGN
@@ -281,3 +281,9 @@ The output of this is
       ****************************
 
 Here, we see that both entries of the residual vector are very small, so both equations have been solved to high accuracy.
+
+References
+----------
+
+.. [CR2021]   
+   Coralia Cartis and Lindon Roberts, `Scalable Subspace Methods for Derivative-Free Nonlinear Least-Squares Optimization <https://arxiv.org/abs/2102.12016>`_, *arXiv preprint arXiv:2102.12016*, (2021).

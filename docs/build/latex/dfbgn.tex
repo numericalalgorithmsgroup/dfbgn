@@ -74,7 +74,7 @@
 
 
 \title{DFBGN}
-\date{23 October 2020}
+\date{25 February 2021}
 \release{0.1}
 \author{Lindon Roberts}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -92,7 +92,7 @@
 
 \sphinxstylestrong{Release:} 0.1
 
-\sphinxstylestrong{Date:} 23 October 2020
+\sphinxstylestrong{Date:} 25 February 2021
 
 \sphinxstylestrong{Author:} \sphinxhref{mailto:lindon.roberts@anu.edu.au}{Lindon Roberts}
 
@@ -102,6 +102,8 @@ That is, DFBGN solves
 \begin{equation*}
 \begin{split}\min_{x\in\mathbb{R}^n} \quad  f(x) := \sum_{i=1}^{m}r_{i}(x)^2\end{split}
 \end{equation*}
+Full details of the DFBGN algorithm are given in our paper: Coralia Cartis and Lindon Roberts, \sphinxhref{https://arxiv.org/abs/2102.12016}{Scalable Subspace Methods for Derivative\sphinxhyphen{}Free Nonlinear Least\sphinxhyphen{}Squares Optimization}, \sphinxstyleemphasis{arXiv preprint arXiv:2102.12016}, (2021).
+
 If you wish to solve small\sphinxhyphen{}scale least\sphinxhyphen{}squares problems, you may wish to try \sphinxhref{https://github.com/numericalalgorithmsgroup/dfols}{DFO\sphinxhyphen{}LS}. If you are interested in solving general optimization problems (without a least\sphinxhyphen{}squares structure), you may wish to try \sphinxhref{https://github.com/numericalalgorithmsgroup/pybobyqa}{Py\sphinxhyphen{}BOBYQA}.
 
 DFBGN is released under the GNU General Public License. Please \sphinxhref{http://www.nag.com/content/worldwide-contact-information}{contact NAG} for alternative licensing.
@@ -248,7 +250,7 @@ DFBGN is designed to solve the local optimization problem
 \begin{equation*}
 \begin{split}\min_{x\in\mathbb{R}^n} \quad  f(x) := \sum_{i=1}^{m}r_{i}(x)^2\end{split}
 \end{equation*}
-DFBGN iteratively constructs an interpolation\sphinxhyphen{}based model for the objective, and determines a step using a trust\sphinxhyphen{}region framework.
+DFBGN iteratively constructs an interpolation\sphinxhyphen{}based model for the objective, and determines a step using a trust\sphinxhyphen{}region framework. For an in\sphinxhyphen{}depth technical description of the algorithm see the paper \sphinxcite{userguide:cr2021}.
 
 
 \section{How to use DFBGN}
@@ -567,9 +569,17 @@ Success: Objective is sufficiently small
 Here, we see that both entries of the residual vector are very small, so both equations have been solved to high accuracy.
 
 
+\section{References}
+\label{\detokenize{userguide:references}}
+
 \chapter{Acknowledgements}
 \label{\detokenize{index:acknowledgements}}
 This software was developed under the supervision of \sphinxhref{https://www.maths.ox.ac.uk/people/coralia.cartis}{Coralia Cartis}, and was supported by the EPSRC Centre For Doctoral Training in \sphinxhref{https://www.maths.ox.ac.uk/study-here/postgraduate-study/industrially-focused-mathematical-modelling-epsrc-cdt}{Industrially Focused Mathematical Modelling} (EP/L015803/1) in collaboration with the \sphinxhref{http://www.nag.com/}{Numerical Algorithms Group}.
+
+\begin{sphinxthebibliography}{CR2021}
+\bibitem[CR2021]{userguide:cr2021}
+Coralia Cartis and Lindon Roberts, \sphinxhref{https://arxiv.org/abs/2102.12016}{Scalable Subspace Methods for Derivative\sphinxhyphen{}Free Nonlinear Least\sphinxhyphen{}Squares Optimization}, \sphinxstyleemphasis{arXiv preprint arXiv:2102.12016}, (2021).
+\end{sphinxthebibliography}
 
 
 

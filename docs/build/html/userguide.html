@@ -96,6 +96,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#more-output">More Output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#example-noisy-objective-evaluation">Example: Noisy Objective Evaluation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#example-solving-a-nonlinear-system-of-equations">Example: Solving a Nonlinear System of Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
 </ul>
 </li>
 </ul>
@@ -171,7 +172,7 @@
 <p>DFBGN is designed to solve the local optimization problem</p>
 <div class="math notranslate nohighlight">
 \[\min_{x\in\mathbb{R}^n} \quad  f(x) := \sum_{i=1}^{m}r_{i}(x)^2\]</div>
-<p>DFBGN iteratively constructs an interpolation-based model for the objective, and determines a step using a trust-region framework.</p>
+<p>DFBGN iteratively constructs an interpolation-based model for the objective, and determines a step using a trust-region framework. For an in-depth technical description of the algorithm see the paper <a class="reference internal" href="#cr2021" id="id1"><span>[CR2021]</span></a>.</p>
 </div>
 <div class="section" id="how-to-use-dfbgn">
 <h2>How to use DFBGN<a class="headerlink" href="#how-to-use-dfbgn" title="Permalink to this headline">¶</a></h2>
@@ -427,6 +428,14 @@ Success: Objective is sufficiently small
 </div>
 </div></blockquote>
 <p>Here, we see that both entries of the residual vector are very small, so both equations have been solved to high accuracy.</p>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<dl class="citation">
+<dt class="label" id="cr2021"><span class="brackets"><a class="fn-backref" href="#id1">CR2021</a></span></dt>
+<dd><p>Coralia Cartis and Lindon Roberts, <a class="reference external" href="https://arxiv.org/abs/2102.12016">Scalable Subspace Methods for Derivative-Free Nonlinear Least-Squares Optimization</a>, <em>arXiv preprint arXiv:2102.12016</em>, (2021).</p>
+</dd>
+</dl>
 </div>
 </div>
 

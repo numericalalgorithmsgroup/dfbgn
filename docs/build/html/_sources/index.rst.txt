@@ -20,6 +20,8 @@ That is, DFBGN solves
 
    \min_{x\in\mathbb{R}^n} \quad  f(x) := \sum_{i=1}^{m}r_{i}(x)^2
 
+Full details of the DFBGN algorithm are given in our paper: Coralia Cartis and Lindon Roberts, `Scalable Subspace Methods for Derivative-Free Nonlinear Least-Squares Optimization <https://arxiv.org/abs/2102.12016>`_, *arXiv preprint arXiv:2102.12016*, (2021).
+
 If you wish to solve small-scale least-squares problems, you may wish to try `DFO-LS <https://github.com/numericalalgorithmsgroup/dfols>`_. If you are interested in solving general optimization problems (without a least-squares structure), you may wish to try `Py-BOBYQA <https://github.com/numericalalgorithmsgroup/pybobyqa>`_.
 
 DFBGN is released under the GNU General Public License. Please `contact NAG <http://www.nag.com/content/worldwide-contact-information>`_ for alternative licensing.

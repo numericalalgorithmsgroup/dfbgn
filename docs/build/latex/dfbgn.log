@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.3.30)  23 OCT 2020 22:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.3.30)  25 FEB 2021 16:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1162,51 +1162,55 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10> not available
 
 ]
 Chapter 1.
-LaTeX Font Info:    Try loading font information for TS1+ptm on input line 117.
+LaTeX Font Info:    Try loading font information for TS1+ptm on input line 119.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 141.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 143.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 ) [3]
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <9> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 209.
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 211.
  [4]
 Chapter 2.
 [5
 
 ]
 LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <9> not available
-(Font)              Font shape `T1/pcr/b/n' tried instead on input line 325.
+(Font)              Font shape `T1/pcr/b/n' tried instead on input line 327.
  [6]
-LaTeX Font Info:    Try loading font information for TS1+pcr on input line 394.
+LaTeX Font Info:    Try loading font information for TS1+pcr on input line 396.
 
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1pcr.fd
 File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
 ) [7] [8]
 [9] [10]
 Chapter 3.
-(./dfbgn.ind)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 578.
- [11
+[11
+
+] [12
+
+] (./dfbgn.ind)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 588.
+ [13
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 578.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 588.
  (./dfbgn.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 578.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 578.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 588.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 588.
 Package rerunfilecheck Info: File `dfbgn.out' has not changed.
-(rerunfilecheck)             Checksum: 2F562AE9A123155372637158F6FD983C;2189.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 578.
+(rerunfilecheck)             Checksum: E0999F30A98E727714AF1883EA61FE85;2399.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 588.
  ) 
 Here is how much of TeX's memory you used:
- 13681 strings out of 494923
- 189448 string characters out of 6180742
- 311835 words of memory out of 5000000
- 16652 multiletter control sequences out of 15000+600000
+ 13690 strings out of 494923
+ 189569 string characters out of 6180742
+ 311917 words of memory out of 5000000
+ 16656 multiletter control sequences out of 15000+600000
  48779 words of font info for 71 fonts, out of 8000000 for 9000
  15 hyphenation exceptions out of 8191
  37i,16n,48p,614b,548s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1229,10 +1233,10 @@ lvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo
 8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on dfbgn.pdf (15 pages, 210592 bytes).
+Output written on dfbgn.pdf (17 pages, 215172 bytes).
 PDF statistics:
- 255 PDF objects out of 1000 (max. 8388607)
- 210 compressed objects within 3 object streams
- 30 named destinations out of 1000 (max. 500000)
- 133 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 280 PDF objects out of 1000 (max. 8388607)
+ 233 compressed objects within 3 object streams
+ 35 named destinations out of 1000 (max. 500000)
+ 149 words of extra memory for PDF output out of 10000 (max. 10000000)
 

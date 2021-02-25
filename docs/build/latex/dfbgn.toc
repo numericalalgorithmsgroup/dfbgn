@@ -12,4 +12,6 @@
 \contentsline {section}{\numberline {2.4}More Output}{7}{section.2.4}
 \contentsline {section}{\numberline {2.5}Example: Noisy Objective Evaluation}{8}{section.2.5}
 \contentsline {section}{\numberline {2.6}Example: Solving a Nonlinear System of Equations}{9}{section.2.6}
+\contentsline {section}{\numberline {2.7}References}{10}{section.2.7}
 \contentsline {chapter}{\numberline {3}Acknowledgements}{11}{chapter.3}
+\contentsline {chapter}{Bibliography}{13}{chapter*.3}
