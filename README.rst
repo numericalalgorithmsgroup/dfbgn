@@ -18,10 +18,18 @@ DFBGN: Derivative-Free Block Gauss-Newton
 DFBGN is a Python package for  nonlinear least-squares minimization, where derivatives are not available.
 It is particularly useful when evaluations of the objective are expensive and/or noisy, and the number of variables to be optimized is large.
 
+This is an implementation of the algorithm from our paper: C. Cartis, L. Roberts, Scalable Subspace Methods for Derivative-Free Nonlinear Least-Squares Optimization, (2021) [`preprint <https://arxiv.org/abs/2102.12016>`_].
+
 DFBGN is based on `DFO-LS <https://github.com/numericalalgorithmsgroup/dfols>`_, but is better-suited when there are many variables to be optimized (so the linear algebra in DFO-LS is too slow).
 Unlike DFO-LS, DFBGN does not currently support bound constraints on the variables.
 
 If you are interested in solving general optimization problems (without a least-squares structure), you may wish to try `Py-BOBYQA <https://github.com/numericalalgorithmsgroup/pybobyqa>`_.
+
+Citation
+--------
+If you use DFBGN in a paper, please cite:
+
+Cartis, C., and Roberts, L., `Scalable Subspace Methods for Derivative-Free Nonlinear Least-Squares Optimization <https://arxiv.org/abs/2102.12016>`_, *arXiv preprint arXiv:2102.12016*, (2021).
 
 Requirements
 ------------
