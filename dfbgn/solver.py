@@ -479,7 +479,7 @@ def solve_main(objfun, x0, args, xl, xu, rhobeg, rhoend, maxfun, nruns_so_far, n
         pred_reduction = -np.dot(sk_red, gk + 0.5 * Hk.vec_mul(sk_red))
 
         if (params("general.use_safety_step") and norm_sk < params("general.safety_step_thresh") * (rho if params("tr_radius.use_rho") else delta)) \
-                or pred_reduction < 2.0*np.finfo(np.float).eps:  # step too short or TRS gave model increase
+                or pred_reduction < 2.0*np.finfo(float).eps:  # step too short or TRS gave model increase
             logging.debug("Safety step")
             iter_type = ITER_SAFETY
             num_consecutive_safety_steps += 1
@@ -825,7 +825,7 @@ def solve(objfun, x0, args=(), fixed_block=None, bounds=None, rhobeg=None, rhoen
         maxfun = min(100 * (n + 1), 1000)  # 100 gradients, capped at 1000
 
     # Set parameters
-    params = ParameterList(int(n), int(maxfun), objfun_has_noise=objfun_has_noise)  # make sure int, not np.int
+    params = ParameterList(int(n), int(maxfun), objfun_has_noise=objfun_has_noise)  # make sure int, not int
     if user_params is not None:
         for (key, val) in user_params.items():
             params(key, new_value=val)

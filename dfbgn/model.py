@@ -65,7 +65,7 @@ class InterpSet(object):
         self.xu = xu
         self.points = np.inf * np.ones((self.p + 1, n))  # interpolation points
         self.points[0, :] = x0
-        self.point_ages = np.zeros((self.p + 1,), dtype=np.int)  # how many iterations has each point been here for?
+        self.point_ages = np.zeros((self.p + 1,), dtype=int)  # how many iterations has each point been here for?
 
         # Function values
         self.rvals = np.inf * np.ones((self.p + 1, m))  # residuals for each xpt
