@@ -29,6 +29,6 @@ jobs:
     - name: Build package
       run: |
         python setup.py build
-    - name: Test with nose
+    - name: Run unit tests
       run: |
         nosetests -v
