@@ -2,8 +2,8 @@
 DFBGN: Derivative-Free Block Gauss-Newton
 =========================================
 
-.. image::  https://travis-ci.org/numericalalgorithmsgroup/dfbgn.svg?branch=master
-   :target: https://travis-ci.org/numericalalgorithmsgroup/dfbgn
+.. image::  https://github.com/numericalalgorithmsgroup/dfbgn/actions/workflows/python_testing.yml/badge.svg
+   :target: https://github.com/numericalalgorithmsgroup/dfbgn/actions
    :alt: Build Status
 
 .. image::  https://img.shields.io/badge/License-GPL%20v3-blue.svg
